@@ -5,7 +5,7 @@ const Home: React.FunctionComponent<IPage> = (props) => {
 
     return (
         <div className="main-wrapper">
-            <p>Home</p>
+            <p>Drivers</p>
         </div>
     );
 };
