@@ -1,5 +1,6 @@
 import { Response, Request } from "express"
-import { drivers } from "../app"
+import { IDriver } from "../interfaces/driver.interfaces";
+import driverContainer from "../_helpers/driver.container";
 
 /**
  * Get all the drivers
@@ -11,12 +12,41 @@ import { drivers } from "../app"
  */
 export function getDriversController(req:Request, res:Response) {
 
-    let driversRes = drivers;
+    let driversRes = driverContainer.getDrivers();
     res.status(200).send(driversRes)
 }
 
+/**
+ * Modify drivers position
+ * 
+ * @param req Express request, param: id
+ * @param res Express response
+ * @returns 
+ */
 export function overtakeDriverController(req:Request, res:Response) {
 
-    //implement
-    return ""
+    const driverId = parseInt(req.params.id);
+    const currentDriverList = driverContainer.getDrivers();
+
+    const currentIndex = currentDriverList.findIndex((driver:IDriver) => driver.id === driverId);
+    const element = currentDriverList.find((driver:IDriver) => driver.id === driverId);
+
+    //If element not found send back error
+    if(!element) {
+        res.status(404).send("Invalid driver id.")
+        return;
+    }
+
+    if(currentIndex-1 >= 0) {
+
+        //remove from index
+        currentDriverList.splice(currentIndex, 1);
+    
+        let tempDrivers :IDriver[] = currentDriverList.splice(currentIndex-1, 0, element)
+
+        driverContainer.setDrivers(tempDrivers);
+    }
+
+    //send back new driver list
+    res.status(200).send(driverContainer.getDrivers());
 }

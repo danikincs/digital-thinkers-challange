@@ -12,7 +12,5 @@ const app = express();
 //routers
 app.use("/api", router);
 
-//load drivers
-export const drivers = loadJson();
 
 export default app;
