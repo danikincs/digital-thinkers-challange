@@ -14,6 +14,7 @@ const Home: React.FunctionComponent<IPage> = () => {
         getDrivers();
     }, []);
 
+    //get all drivers
     async function getDrivers() {
         try {
             const driverResponse = await instance.get("/api/drivers");
@@ -24,6 +25,7 @@ const Home: React.FunctionComponent<IPage> = () => {
         }
     }
 
+    //overtake driver
     async function overtake(id:number) {
         try {
             const driverResponse = await instance.post(`/api/drivers/${id}/overtake`);
@@ -41,12 +43,10 @@ const Home: React.FunctionComponent<IPage> = () => {
             <Container className="drivers-container">
                 {drivers.map((driver:IDriver, index:number) => {
                     return(
-                        <Driver index={index} driver={driver} overtake={overtake}/>
+                        <Driver key={index} index={index} driver={driver} overtake={overtake}/>
                     )
                 })}
             </Container>
-
-            {!drivers.length && <p>We couldn't find any drivers.</p>}
         </div>
     );
 };

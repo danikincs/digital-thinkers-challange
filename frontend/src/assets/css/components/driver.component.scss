@@ -18,13 +18,22 @@
     }
 
     .driver-details {
-        p:first-child {
+        .name {
             font-weight: 600;
             font-size: 21px;
         }
 
         p:not(:last-child) {
             margin-bottom: 2px;
+        }
+
+        .country-details {
+            display: flex;
+            gap: 10px;
+            .country {
+                width: auto;
+                height: 25px;
+            }
         }
     }
 
