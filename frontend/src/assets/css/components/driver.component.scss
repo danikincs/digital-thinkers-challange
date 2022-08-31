@@ -1,0 +1,52 @@
+.driver-container {
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin: 20px;
+    padding: 10px;
+
+    .place {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .driver-avatar {
+        width: 100px;
+        height: 100px;
+
+        float: right;
+    }
+
+    .driver-details {
+        .name {
+            font-weight: 600;
+            font-size: 21px;
+        }
+
+        p:not(:last-child) {
+            margin-bottom: 2px;
+        }
+
+        .country-details {
+            display: flex;
+            gap: 10px;
+            .country {
+                width: auto;
+                height: 25px;
+            }
+        }
+    }
+
+
+    .interaction-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.driver-container:first-child {
+    .place {
+        color: gold;
+    }
+}
