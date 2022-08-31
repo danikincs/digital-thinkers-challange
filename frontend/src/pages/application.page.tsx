@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import routes from '../config/routes';
+import { ToastContainer } from 'react-toastify';
 
 const Application: React.FunctionComponent<{}> = props => {
 
     return (
         <div className="App">
+            <ToastContainer />
             <BrowserRouter>
                 <Routes>
                     {routes.map((route, index) => {
